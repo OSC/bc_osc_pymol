@@ -1,21 +1,33 @@
 <%-
-  ppn = num_cores.blank? ? 28 : num_cores.to_i
+  cores = num_cores.to_i
 
-  torque_cluster = OodAppkit.clusters[cluster].job_config[:adapter] == 'torque'
+  if cores == 0 && cluster == "pitzer"
+    # little optimization for pitzer nodes. They want the whole node, if they chose 'any',
+    # it can be scheduled on p18 or p20 nodes. If not, they'll get the constraint below.
+    base_slurm_args = ["--nodes", "1", "--exclusive"]
+  elsif cores == 0
+    # full node on owens
+    cores = 28
+    base_slurm_args = ["--nodes", "1", "--ntasks-per-node", "28"]
+  else
+    base_slurm_args = ["--nodes", "1", "--ntasks-per-node", "#{cores}"]
+  end
 
-  slurm_args = [ "--nodes", "1", "--ntasks-per-node", "#{ppn}" ]
-  torque_args = "1:ppn=#{ppn}"
+  args  = case node_type
+            when "any-40core"
+              base_slurm_args + ["--constraint", "40core"]
+            when "any-48core"
+              base_slurm_args + ["--constraint", "48core"]
+            else
+              base_slurm_args
+            end
+
 %>
 ---
 batch_connect:
   template: vnc
 script:
   native:
-  <%- if torque_cluster %>
-    resources:
-      nodes: "<%= torque_args %>"
-  <%- else %>
-  <%- slurm_args.each do |arg| %>
+  <%- args.each do |arg| %>
     - "<%= arg %>"
-  <%- end %>
   <%- end %>
