@@ -26,11 +26,16 @@ cd "${HOME}"
 #
 
 # Load the required environment
-module load xalt/latest iqmol/2.14
+module load xalt/latest <%= context.version %>
 
 # Output debug info
 module list
 
-export SINGULARITY_BINDPATH="$HOME,/etc,/fs,/var,/run,/tmp,$OSC_QCHEM_DIR:/opt/qchem,$OSC_XALT_DIR,$OSC_XALT_DIR"
+export SINGULARITY_BINDPATH="$HOME,/etc,/fs,/var,/run,/tmp,$OSC_XALT_DIR"
 
-iqmol.app
+# Create PyMOL comamdn script
+cat << EOF > script.pml
+set max_threads, $SLURM_NTASKS
+EOF
+
+pymol.app script.pml

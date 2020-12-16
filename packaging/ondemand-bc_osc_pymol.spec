@@ -1,7 +1,7 @@
 # Disable debuginfo as it causes issues with bundled gems that build libraries
 %global debug_package %{nil}
-%global repo_name bc_osc_iqmol
-%global app_name bc_osc_iqmol
+%global repo_name bc_osc_pymol
+%global app_name bc_osc_pymol
 %{!?package_version: %define package_version %{major}.%{minor}.%{patch}}
 %{!?package_release: %define package_release 1}
 %{!?git_tag: %define git_tag v%{package_version}}
@@ -24,7 +24,7 @@ Requires: ondemand
 AutoReqProv: no
 
 %description
-An interactive app designed for OSC OnDemand that launches a Jupyter Notebook server within an Owens batch job.
+An interactive app designed for OSC OnDemand that launches a PyMOL GUI within an Owens or Pitzer batch job.
 
 
 %prep

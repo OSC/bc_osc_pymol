@@ -1,12 +1,16 @@
-cluster:
-  - "owens"
-  - "owens-slurm"
 form:
+  - cluster
   - bc_account
   - bc_num_hours
   - num_cores
   - node_type
+  - version
 attributes:
+  cluster:
+    widget: "select"
+    options:
+      - "owens"
+      - "pitzer"
   bc_account:
     label: "Project"
     help: "You can leave this blank if **not** in multiple projects."
@@ -21,3 +25,9 @@ attributes:
     max: 28
     step: 1
   node_type: "any"
+  version:
+    widget: "select"
+    label: "PyMOL Version"
+    options:
+      - [ "2.4.0",  "pymol/2.4.0" ]
+  classroom: 0

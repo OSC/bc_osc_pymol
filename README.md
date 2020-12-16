@@ -1,9 +1,9 @@
-# Batch Connect - OSC IQMol
+# Batch Connect - OSC PyMOL
 
-![GitHub Release](https://img.shields.io/github/release/osc/bc_osc_iqmol.svg)
+![GitHub Release](https://img.shields.io/github/release/osc/bc_osc_pymol.svg)
 [![GitHub License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-An interactive app designed for OSC OnDemand that launches IQMol in an XFCE desktop.
+An interactive app designed for OSC OnDemand that launches PyMOL in an XFCE desktop.
 
 ## Prerequisites
 
@@ -47,7 +47,7 @@ Again, you do not need to restart the app as it isn't a Passenger app.
 
 ## Contributing
 
-1. Fork it ( https://github.com/OSC/bc_osc_iqmol/fork )
+1. Fork it ( https://github.com/OSC/bc_osc_pymol/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
