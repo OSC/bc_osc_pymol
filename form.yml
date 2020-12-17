@@ -1,16 +1,13 @@
+cluster:
+  - "owens"
+  - "pitzer"
 form:
-  - cluster
   - bc_account
   - bc_num_hours
   - num_cores
   - node_type
   - version
 attributes:
-  cluster:
-    widget: "select"
-    options:
-      - "owens"
-      - "pitzer"
   bc_account:
     label: "Project"
     help: "You can leave this blank if **not** in multiple projects."
@@ -24,7 +21,32 @@ attributes:
     min: 0
     max: 28
     step: 1
-  node_type: "any"
+  node_type:
+    widget: "select"
+    options:
+      - [
+          "any",     "any",
+          data-min-ppn-owens: 1,
+          data-max-ppn-owens: 28,
+          data-min-ppn-pitzer: 1,
+          data-max-ppn-pitzer: 48,
+          data-option-for-owens: true,
+          data-option-for-pitzer: true
+        ]
+      - [
+          "40 core",     "any-40core",
+          data-min-ppn-pitzer: 1,
+          data-max-ppn-pitzer: 40,
+          data-option-for-owens: false,
+          data-option-for-pitzer: true
+        ]
+      - [
+          "48 core",     "any-48core",
+          data-min-ppn-pitzer: 1,
+          data-max-ppn-pitzer: 48,
+          data-option-for-owens: false,
+          data-option-for-pitzer: true
+        ]
   version:
     widget: "select"
     label: "PyMOL Version"
