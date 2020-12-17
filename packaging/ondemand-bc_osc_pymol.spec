@@ -10,7 +10,7 @@
 Name:     ondemand-%{app_name}
 Version:  %{package_version}
 Release:  %{package_release}%{?dist}
-Summary:  Batch Connect - OSC IQmol
+Summary:  Batch Connect - OSC PyMol
 
 Group:    System Environment/Daemons
 License:  MIT
