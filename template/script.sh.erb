@@ -34,8 +34,8 @@ module list
 export SINGULARITY_BINDPATH="$HOME,/etc,/fs,/var,/run,/tmp,$OSC_XALT_DIR"
 
 # Create PyMOL comamdn script
-cat << EOF > script.pml
+cat << EOF > $TMPDIR/script.pml
 set max_threads, $SLURM_NTASKS
 EOF
 
-pymol.app script.pml
+pymol.app $TMPDIR/script.pml
