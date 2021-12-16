@@ -36,26 +36,18 @@ attributes:
     options:
       - [
           "any",     "any",
-          data-min-ppn-owens: 1,
-          data-max-ppn-owens: 28,
-          data-min-ppn-pitzer: 1,
-          data-max-ppn-pitzer: 48,
-          data-option-for-owens: true,
-          data-option-for-pitzer: true
+          data-max-num-cores-for-cluster-owens: 28,
+          data-max-num-cores-for-cluster-pitzer: 48
         ]
       - [
           "40 core",     "any-40core",
-          data-min-ppn-pitzer: 1,
-          data-max-ppn-pitzer: 40,
-          data-option-for-owens: false,
-          data-option-for-pitzer: true
+          data-max-num-cores-for-cluster-pitzer: 40,
+          data-option-for-cluster-owens: false
         ]
       - [
           "48 core",     "any-48core",
-          data-min-ppn-pitzer: 1,
-          data-max-ppn-pitzer: 48,
-          data-option-for-owens: false,
-          data-option-for-pitzer: true
+          data-max-num-cores-for-cluster-pitzer: 48,
+          data-option-for-cluster-owens: false
         ]
   version:
     widget: "select"
