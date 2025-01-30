@@ -1,26 +1,14 @@
-<%-
-  groups = OodSupport::User.new.groups.sort_by(&:id).tap { |groups|
-    groups.unshift(groups.delete(OodSupport::Process.group))
-  }.map(&:name).grep(/^P./)
--%>
 ---
 cluster:
   - "pitzer"
   - "cardinal"
 form:
-  - account
+  - auto_accounts
   - bc_num_hours
   - num_cores
   - node_type
   - version
 attributes:
-  account:
-    label: "Project"
-    widget: select
-    options:
-      <%- groups.each do |group| %>
-      - "<%= group %>"
-      <%- end %>
   num_cores:
     widget: "number_field"
     label: "Number of cores"
