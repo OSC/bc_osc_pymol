@@ -24,7 +24,7 @@ Requires: ondemand
 AutoReqProv: no
 
 %description
-An interactive app designed for OSC OnDemand that launches a PyMOL GUI within an Owens or Pitzer batch job.
+An interactive app designed for OSC OnDemand that launches a PyMOL GUI within an Pitzer or Cardinal batch job.
 
 
 %prep
