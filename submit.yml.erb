@@ -7,10 +7,6 @@
     base_slurm_args = ["--nodes", "1", "--exclusive"]
   elsif cores == 0 && cluster == "cardinal"
     base_slurm_args = ["--nodes", "1", "--exclusive"]
-  elsif cores == 0
-    # full node on owens
-    cores = 28
-    base_slurm_args = ["--nodes", "1", "--ntasks-per-node", "28"]
   else
     base_slurm_args = ["--nodes", "1", "--ntasks-per-node", "#{cores}"]
   end
