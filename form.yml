@@ -16,19 +16,22 @@ attributes:
     help: |
       Number of cores on node type (4 GB per core unless requesting whole
       node). Leave blank if requesting full node.
-    min: 0
-    max: 28
+    min: 1
+    max: 48
     step: 1
   node_type:
     widget: "select"
     options:
       - [
           "any",     "any",
+          data-min-num-cores-for-cluster-pitzer: 1,
           data-max-num-cores-for-cluster-pitzer: 48,
+          data-min-num-cores-for-cluster-cardinal: 1,
           data-max-num-cores-for-cluster-cardinal: 96
         ]
       - [
           "48 core",     "any-48core",
+          data-min-num-cores-for-cluster-pitzer: 1,
           data-max-num-cores-for-cluster-pitzer: 48,
           data-option-for-cluster-cardinal: false
         ]
