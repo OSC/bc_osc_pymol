@@ -1,13 +1,14 @@
 ---
 cluster:
   - "pitzer"
+  - "pitzer-rhel9"
   - "cardinal"
 form:
   - auto_accounts
   - bc_num_hours
   - num_cores
   - node_type
-  - version
+  - auto_modules_pymol
 attributes:
   num_cores:
     widget: "number_field"
@@ -26,6 +27,8 @@ attributes:
           "any",     "any",
           data-min-num-cores-for-cluster-pitzer: 1,
           data-max-num-cores-for-cluster-pitzer: 48,
+          data-min-num-cores-for-cluster-pitzer-rhel9: 1,
+          data-max-num-cores-for-cluster-pitzer-rhel9: 48,
           data-min-num-cores-for-cluster-cardinal: 1,
           data-max-num-cores-for-cluster-cardinal: 96
         ]
@@ -33,11 +36,9 @@ attributes:
           "48 core",     "any-48core",
           data-min-num-cores-for-cluster-pitzer: 1,
           data-max-num-cores-for-cluster-pitzer: 48,
+          data-min-num-cores-for-cluster-pitzer-rhel9: 1,
+          data-max-num-cores-for-cluster-pitzer-rhel9: 48,
           data-option-for-cluster-cardinal: false
         ]
-  version:
-    widget: "select"
-    label: "PyMOL Version"
-    options:
-      - [ "2.4.0",  "pymol/2.4.0" ]
-  classroom: 0
+  auto_modules_pymol:
+    default: false
