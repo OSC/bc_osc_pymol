@@ -3,37 +3,17 @@ cluster:
   - "pitzer"
   - "cardinal"
 form:
-  - auto_accounts
-  - bc_num_hours
-  - num_cores
-  - node_type
   - auto_modules_pymol
+  - auto_accounts
+  - global_job_type
+  - global_enable_mem
+  - global_num_cores
+  - global_mem
+  - bc_num_hours
+  - global_gpus
+  - global_gpu_type
+  - global_enable_debug
+  - global_default_values
 attributes:
-  num_cores:
-    widget: "number_field"
-    label: "Number of cores"
-    value: 1
-    help: |
-      Minimums and maximums will change based on your choice of cluster and
-      node type.
-    min: 1
-    max: 48
-    step: 1
-  node_type:
-    widget: "select"
-    options:
-      - [
-          "any",     "any",
-          data-min-num-cores-for-cluster-pitzer: 1,
-          data-max-num-cores-for-cluster-pitzer: 48,
-          data-min-num-cores-for-cluster-cardinal: 1,
-          data-max-num-cores-for-cluster-cardinal: 96
-        ]
-      - [
-          "48 core",     "any-48core",
-          data-min-num-cores-for-cluster-pitzer: 1,
-          data-max-num-cores-for-cluster-pitzer: 48,
-          data-option-for-cluster-cardinal: false
-        ]
   auto_modules_pymol:
     default: false

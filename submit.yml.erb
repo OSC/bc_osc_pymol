@@ -1,23 +1,28 @@
 <%-
-  cores = num_cores.to_i
-
-  base_slurm_args = ["--nodes", "1", "--ntasks-per-node", "#{cores}"]
-
-  args  = case node_type
-            when "any-40core"
-              base_slurm_args + ["--constraint", "40core"]
-            when "any-48core"
-              base_slurm_args + ["--constraint", "48core"]
-            else
-              base_slurm_args
-            end
-
 %>
 ---
 batch_connect:
   template: vnc
 script:
+  # set GPUs
+  <%- if global_gpus.to_i > 0 -%>
+  gpus_per_node: <%= global_gpus %>
+  <%- end %>
   native:
-  <%- args.each do |arg| %>
-    - "<%= arg %>"
+  # set CPUs
+  - "--ntasks-per-node"
+  - "<%= global_num_cores.to_i %>"
+  # set partition
+  - "--partition"
+  <%- if global_enable_debug.to_i == 1 -%>
+  - "debug"
+  <%- elsif global_gpus.to_i > 0 -%>
+  - "<%= global_gpu_type.split('-').drop(1).join('-') %>"
+  <%- else %>
+  - "batch"
+  <%- end %>
+  # set memory
+  <%- if global_enable_mem.to_i == 1  -%>
+  - "--mem"
+  - "<%= global_mem.to_i%>G"
   <%- end %>
